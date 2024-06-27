@@ -1,0 +1,18 @@
+{
+    "templates": [
+        {
+            "name": "Laravel Controller",
+            "inputFile": "docdriven/input/basic-controller.php",
+            "outputDirectory": "docdriven/output",
+            "type": "Endpoints",
+            "split": false
+        },
+        {
+            "name": "Laravel Eloquent Model",
+            "inputFile": "docdriven/input/basic-model.php",
+            "outputDirectory": "docdriven/output",
+            "type": "Schemas",
+            "split": true
+        }
+    ]
+}
