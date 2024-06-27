@@ -2,7 +2,7 @@
 
 ## Getting Started Guide
 
-This is a basic configuration for Laravel that will help you setup DocDriven Code Assistant to create the following:
+This is a basic configuration for *Laravel* that will help you setup *DocDriven Code Assistant* to create the following:
 
 - Controllers
 - Models
@@ -16,7 +16,7 @@ This is a basic configuration for Laravel that will help you setup DocDriven Cod
 
 >Unzip the file and copy the `docdriven` directory and `docdriven.config.json` into the root of your *Laravel* project where you want the *Code Assistant* to operate. Ensure your project is inside a GitHub repository.
 
-**3. Customize to fit your project**
+**3. Customize to fit your Project**
 
 >To get the most out of the *DocDriven Code Assistant*, you need to customize the configuration and input files based on your framework, namespace, coding style, libraries, and any other specific requirements you have. 
 
