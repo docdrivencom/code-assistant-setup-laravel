@@ -3,16 +3,30 @@
         {
             "name": "Laravel Controller",
             "inputFile": "docdriven/input/basic-controller.php",
-            "outputDirectory": "docdriven/output",
+            "outputDirectory": "app/Http/Controllers",
             "type": "Endpoints",
             "split": false
         },
         {
             "name": "Laravel Eloquent Model",
             "inputFile": "docdriven/input/basic-model.php",
-            "outputDirectory": "docdriven/output",
+            "outputDirectory": "app/Models",
             "type": "Schemas",
             "split": true
+        },
+        {
+            "name": "Laravel Routes",
+            "inputFile": "docdriven/input/basic-routes.php",
+            "outputDirectory": "routes/api.rb",
+            "type": "Endpoints",
+            "split": false
+        },
+        {
+            "name": "Laravel Migration",
+            "inputFile": "docdriven/input/basic-migration.php",
+            "outputDirectory": "database/migrations/<now:YYYY_MM_DD_HHMMSS>_<snakecase:filename>.rb",
+            "type": "Schemas",
+            "split": false
         }
     ]
 }

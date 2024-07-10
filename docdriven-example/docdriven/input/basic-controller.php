@@ -1,55 +1,71 @@
 <?php
- 
+
 namespace App\Http\Controllers;
- 
+
 use App\Models\TodoItem;
- 
+use Illuminate\Http\Request;
+
 class TodoItemController extends Controller
 {
+
     /**
-     * Show TodoItem.
+     * GET todo-items
+     * Show all todo items
      */
-    public function show(string $id): string
+    public function index()
     {
-        $todoItem = TodoItem::findOrFail($id);
+        $todoItems = TodoItem::with('comments')->get();
+        return response()->json($todoItems);
+    }
+
+    /**
+     * GET todo-items/1
+     * Show a single todo item
+     */
+    public function show(string $id)
+    {
+        $todoItem = TodoItem::with('comments')->findOrFail($id);
         return response()->json($todoItem);
     }
 
     /**
-     * Show all TodoItems.
+     * POST todo-items
+     * Create a new todo item
      */
-    public function index(): string
+    public function store(Request $request)
     {
-        $todoItems = TodoItem::all();
-        return response()->json($todoItems);
-    }
-
-    /** 
-     * Store a new TodoItem.
-     */
-    public function store(): string
-    {
-        $todoItem = TodoItem::create(request()->all());
+        $todoItem = new TodoItem();
+        $todoItem->name = $request->name;
+        $todoItem->isComplete = $request->isComplete;
+        $todoItem->dueDate = $request->dueDate;
+        $todoItem->save();
         return response()->json($todoItem, 201);
     }
 
     /**
-     * Update a TodoItem.
+     * PUT todo-items/1
+     * Update a todo item
      */
-    public function update(string $id): string
+    public function update(Request $request, string $id)
     {
-        $todoItem = TodoItem::findOrFail($id);
-        $todoItem->update(request()->all());
+        $todoItem = TodoItem::with('comments')->findOrFail($id);
+        $todoItem->name = $request->name;
+        $todoItem->isComplete = $request->isComplete;
+        $todoItem->dueDate = $request->dueDate;
+        $todoItem->save();
         return response()->json($todoItem);
     }
 
     /**
-     * Delete a TodoItem.
+     * DELETE todo-items/1
+     * Delete a todo item
      */
-    public function delete(string $id): string
+    public function destroy(string $id)
     {
         $todoItem = TodoItem::findOrFail($id);
         $todoItem->delete();
-        return response()->json(null, 204);
+        
+        // return no content
+        return response()->noContent();
     }
 }
